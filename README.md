@@ -41,9 +41,9 @@ cd gpt4all-chatbot
 Add the following Variables:
 
 ```
-GPT4ALL_API_BASE=http://localhost:4891/v1
+GPT4ALL_API_BASE=<GPT4ALL_BASE_URL>
 
-MODEL_ID=llama-3-8b-instruct
+MODEL_ID=<YOUR_MODEL_ID>
 ```
 
 ## Build and Run
