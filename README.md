@@ -31,9 +31,9 @@ You can add your own custom responses by editing the C# dictionary or conditiona
 
 ## Clone the repository
 ```bash 
-git clone https://github.com/your-username/gpt4all-chatbot.git
+git clone https://github.com/your-username/gpt4allchatbot.git
 
-cd gpt4all-chatbot
+cd gpt4allchatbot
 ```
 
 ## Create a ```.env``` file
