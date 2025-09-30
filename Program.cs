@@ -15,8 +15,11 @@ while (true)
 {
     Console.Write("\nYou: ");
     var input = Console.ReadLine();
-    if (string.IsNullOrWhiteSpace(input) || input.ToLower() == "q")
+    if (string.IsNullOrWhiteSpace(input) || input.ToLower() == "q") {
+        Console.WriteLine("\nGoodbye!");
         break;
+    }
+        
 
     // CUSTOM RESPONSE
     if (input.Trim().Equals("What is love?", StringComparison.OrdinalIgnoreCase))
