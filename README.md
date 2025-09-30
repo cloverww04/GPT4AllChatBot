@@ -30,6 +30,55 @@ You can add your own custom responses by editing the C# dictionary or conditiona
 - Optional: .env file with configuration.
 
 ## Clone the repository
-```git clone https://github.com/your-username/gpt4all-chatbot.git```
+```bash 
+git clone https://github.com/your-username/gpt4all-chatbot.git
 
-``` cd gpt4all-chatbot```
+cd gpt4all-chatbot
+```
+
+## Create a ```.env``` file
+
+Add the following Variables:
+
+```
+GPT4ALL_API_BASE=http://localhost:4891/v1
+
+MODEL_ID=llama-3-8b-instruct
+```
+
+## Build and Run
+``` bash
+dotnet build
+
+dotnet run
+```
+
+Chat with the AI! Type your questions and hit Enter. Type q to quit.
+
+## How it Works
+1. The chatbot reads your .env configuration to locate your GPT4All local API.
+2. When you type a question:
+	- If it matches a custom response, the chatbot replies immediately.
+	- Otherwise, the request is sent to the GPT4All model for a generative answer.
+3. Responses are displayed directly in your terminal.
+
+## Extending the Chatbot
+
+- Add more custom responses:
+<br>
+Edit the Program.cs and add additional if statements or a dictionary mapping questions to answers.
+- Integrate APIs:
+<br>
+You can add features like weather, jokes, or other data sources by extending the main loop.
+- Change model:
+<br>
+Update MODEL_ID in your .env to point to another GPT4All-compatible model.
+
+
+## Why This Is Cool
+- Fully local: no internet or cloud required.
+- Customizable: personalize responses for fun or business use.
+- demonstrates modern AI integration in a small, readable C# project.
+
+## Example
+ <img src="https://github.com/user-attachments/assets/b18ee1e2-383e-4cd5-8be3-4ace9ac054ab" width="1100px" height="500px" />
