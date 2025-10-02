@@ -11,15 +11,20 @@ var modelId = Environment.GetEnvironmentVariable("MODEL_ID");
 using var client = new HttpClient();
 Console.WriteLine("GPT4All Chatbot ready! Type 'q' to quit.");
 
+var conversationHistory = new List<object>
+{
+    new { role = "system", content = "You are a friendly and concise assistant. Give short, factual answers in a pleasant tone. Avoid storytelling or unnecessary introductions." }
+};
+
 while (true)
 {
     Console.Write("\nYou: ");
     var input = Console.ReadLine();
-    if (string.IsNullOrWhiteSpace(input) || input.ToLower() == "q") {
+    if (string.IsNullOrWhiteSpace(input) || input.ToLower() == "q")
+    {
         Console.WriteLine("\nGoodbye!");
         break;
     }
-        
 
     // CUSTOM RESPONSE
     if (input.Trim().Equals("What is love?", StringComparison.OrdinalIgnoreCase))
@@ -28,16 +33,18 @@ while (true)
         continue;
     }
 
-    // Build the JSON payload for GPT4All
+    // Add user message
+    conversationHistory.Add(new { role = "user", content = input });
+
+    // Keep only the last 10 messages to avoid too long history
+    var messagesToSend = conversationHistory.Skip(Math.Max(0, conversationHistory.Count - 10)).ToList();
+
     var payload = new
     {
         model = modelId,
-        messages = new[]
-        {
-            new { role = "system", content = "You are a helpful assistant." },
-            new { role = "user", content = input }
-        },
-        max_tokens = 1024
+        messages = messagesToSend,
+        max_tokens = 50,
+        temperature = 0.25
     };
 
     try
@@ -48,7 +55,6 @@ while (true)
         using var stream = await response.Content.ReadAsStreamAsync();
         var json = await JsonDocument.ParseAsync(stream);
 
-        // Extract the assistant message
         var assistantMessage = json.RootElement
             .GetProperty("choices")[0]
             .GetProperty("message")
@@ -56,6 +62,9 @@ while (true)
             .GetString();
 
         Console.WriteLine($"\nAI: {assistantMessage}");
+
+        // Add AI message to history
+        conversationHistory.Add(new { role = "assistant", content = assistantMessage });
     }
     catch (Exception ex)
     {

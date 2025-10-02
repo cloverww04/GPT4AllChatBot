@@ -81,4 +81,4 @@ Update MODEL_ID in your .env to point to another GPT4All-compatible model.
 - demonstrates modern AI integration in a small, readable C# project.
 
 ## Example
- <img src="https://github.com/user-attachments/assets/6244883d-fab3-4dd5-9322-5e96367dc970" width="1100px" height="500px" />
+ <img src="https://github.com/user-attachments/assets/d545383f-6fd8-4258-aeb5-b35b24cb8e7a" width="1100px" height="500px" />
