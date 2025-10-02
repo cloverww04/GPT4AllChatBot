@@ -23,6 +23,14 @@ The chatbot responds with:
 
 You can add your own custom responses by editing the C# dictionary or conditional statements in the code.
 
+
+## Behavior
+- The assistant responds in a friendly and concise manner.
+- Short factual answers are prioritized, avoiding unnecessary storytelling.
+- Configuration: 
+  - temperature: 0.25
+  - max_tokens: 50
+
 ## Getting Started (Local Setup)
 ### Prerequisites
 - .NET 8.0 SDK
@@ -64,15 +72,15 @@ Chat with the AI! Type your questions and hit Enter. Type q to quit.
 
 ## Extending the Chatbot
 
-- Add more custom responses
-  
-	Edit the Program.cs and add additional if statements or a dictionary mapping questions to answers.
-- Integrate APIs
-  
-	You can add features like weather, jokes, or other data sources by extending the main loop.
-- Change model
-  
-	Update MODEL_ID in your .env to point to another GPT4All-compatible model.
+- Add more custom responses:
+<br>
+Edit the Program.cs and add additional if statements or a dictionary mapping questions to answers.
+- Integrate APIs:
+<br>
+You can add features like weather, jokes, or other data sources by extending the main loop.
+- Change model:
+<br>
+Update MODEL_ID in your .env to point to another GPT4All-compatible model.
 
 
 ## Why This Is Cool
