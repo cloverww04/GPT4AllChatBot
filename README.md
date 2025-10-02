@@ -73,14 +73,11 @@ Chat with the AI! Type your questions and hit Enter. Type q to quit.
 ## Extending the Chatbot
 
 - Add more custom responses:
-<br>
-Edit the Program.cs and add additional if statements or a dictionary mapping questions to answers.
+   - Edit the Program.cs and add additional if statements or a dictionary mapping questions to answers.
 - Integrate APIs:
-<br>
-You can add features like weather, jokes, or other data sources by extending the main loop.
+   - You can add features like weather, jokes, or other data sources by extending the main loop.
 - Change model:
-<br>
-Update MODEL_ID in your .env to point to another GPT4All-compatible model.
+   - Update MODEL_ID in your .env to point to another GPT4All-compatible model.
 
 
 ## Why This Is Cool
