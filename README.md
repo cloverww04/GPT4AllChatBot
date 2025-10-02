@@ -90,3 +90,7 @@ Update MODEL_ID in your .env to point to another GPT4All-compatible model.
 
 ## Example
  <img src="https://github.com/user-attachments/assets/d545383f-6fd8-4258-aeb5-b35b24cb8e7a" width="1100px" height="500px" />
+
+## Documentation
+
+For more details, see the [GPT4All Documentation](https://docs.gpt4all.io/index.html).
