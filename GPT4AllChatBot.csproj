@@ -9,7 +9,9 @@
 
   <ItemGroup>
     <PackageReference Include="dotenv.net" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.10" />
     <PackageReference Include="Microsoft.SemanticKernel" Version="1.10.0" />
+    <PackageReference Include="ModelContextProtocol" Version="0.4.0-preview.3" />
   </ItemGroup>
 
 </Project>

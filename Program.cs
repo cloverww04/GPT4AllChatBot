@@ -2,6 +2,8 @@
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
+using GPT4AllChatBot.Utils;
+using System.Diagnostics;
 
 DotEnv.Load();
 
@@ -32,6 +34,33 @@ while (true)
         Console.WriteLine("\nAI: 🎵 Baby don't hurt me! 🎵");
         continue;
     }
+
+    // VIDEO GENERATION
+    if (input.StartsWith("generate video", StringComparison.OrdinalIgnoreCase))
+    {
+        var videoManager = new VideoManager();
+        string clipPath = videoManager.GetNextClipName();
+        string promptText = input.Substring("generate:".Length).Trim();
+
+        Console.WriteLine("\n🎬 Generating video locally...");
+
+        var psi = new ProcessStartInfo
+        {
+            FileName = "py",
+            Arguments = $"video_engine/generate_video.py \"{promptText}\" \"{clipPath}\"",
+            RedirectStandardOutput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
+
+        using var process = Process.Start(psi);
+        process.WaitForExit();
+
+        videoManager.SaveMetadata(promptText, clipPath);
+        Console.WriteLine($"✅ Clip saved: {clipPath}");
+        continue; // skip sending this to GPT
+    }
+
 
     // Add user message
     conversationHistory.Add(new { role = "user", content = input });
@@ -65,6 +94,7 @@ while (true)
 
         // Add AI message to history
         conversationHistory.Add(new { role = "assistant", content = assistantMessage });
+
     }
     catch (Exception ex)
     {
